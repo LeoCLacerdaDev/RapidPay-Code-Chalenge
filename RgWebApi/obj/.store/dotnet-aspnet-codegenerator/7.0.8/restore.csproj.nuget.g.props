@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RgWebApi/obj/.store/.stage/swjnymqw.0ck</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RgWebApi/obj/.store/.stage/swjnymqw.0ck</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">DotnetToolReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.6.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RgWebApi/obj/.store/.stage/swjnymqw.0ck/" />
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Pkgdotnet-aspnet-codegenerator Condition=" '$(Pkgdotnet-aspnet-codegenerator)' == '' ">/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RgWebApi/obj/.store/.stage/swjnymqw.0ck/dotnet-aspnet-codegenerator/7.0.8</Pkgdotnet-aspnet-codegenerator>
+  </PropertyGroup>
+</Project>

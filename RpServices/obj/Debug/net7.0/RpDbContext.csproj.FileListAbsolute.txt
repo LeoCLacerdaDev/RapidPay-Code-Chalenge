@@ -1,0 +1,12 @@
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/bin/Debug/net7.0/RpDbContext.deps.json
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/bin/Debug/net7.0/RpDbContext.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/bin/Debug/net7.0/RpDbContext.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.csproj.AssemblyReference.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.AssemblyInfoInputs.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.AssemblyInfo.cs
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.csproj.CoreCompileInputs.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/refint/RpDbContext.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/RpDbContext.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDbContext/obj/Debug/net7.0/ref/RpDbContext.dll

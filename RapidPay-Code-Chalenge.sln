@@ -1,6 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidPay-Code-Chalenge", "RapidPay-Code-Chalenge\RapidPay-Code-Chalenge.csproj", "{3357A5E2-5D91-429C-835A-1C99555F6B4D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RgWebApi", "RgWebApi\RgWebApi.csproj", "{3357A5E2-5D91-429C-835A-1C99555F6B4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpServices", "RpServices\RpServices.csproj", "{21B85EDE-9871-4AC8-AC1F-1F75AE2D107D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RbModels", "RbModels\RbModels.csproj", "{3F1D9518-36FE-4878-84B5-A90365146963}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RpDataHelper", "RpDataHelper\RpDataHelper.csproj", "{90332418-E133-4585-B035-E5C1B10CC9CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +18,17 @@ Global
 		{3357A5E2-5D91-429C-835A-1C99555F6B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3357A5E2-5D91-429C-835A-1C99555F6B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3357A5E2-5D91-429C-835A-1C99555F6B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21B85EDE-9871-4AC8-AC1F-1F75AE2D107D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21B85EDE-9871-4AC8-AC1F-1F75AE2D107D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21B85EDE-9871-4AC8-AC1F-1F75AE2D107D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21B85EDE-9871-4AC8-AC1F-1F75AE2D107D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F1D9518-36FE-4878-84B5-A90365146963}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F1D9518-36FE-4878-84B5-A90365146963}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F1D9518-36FE-4878-84B5-A90365146963}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F1D9518-36FE-4878-84B5-A90365146963}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90332418-E133-4585-B035-E5C1B10CC9CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90332418-E133-4585-B035-E5C1B10CC9CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90332418-E133-4585-B035-E5C1B10CC9CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90332418-E133-4585-B035-E5C1B10CC9CA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
