@@ -4,6 +4,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RbModels;
+using RbModels.Requests;
 using RpDataHelper.Exceptions;
 using RpServices.Services.Interfaces;
 
@@ -40,7 +41,7 @@ namespace RgWebApi.Controllers
             claims.AddRange(new[]
             {
                 new Claim(ClaimTypes.Email, user.Email),
-                new Claim(JwtRegisteredClaimNames.Jti, $"{Guid.NewGuid()}")
+                new Claim(ClaimTypes.NameIdentifier, user.Id)
             });
 
             var token = _jwt.Generatetoken(claims);

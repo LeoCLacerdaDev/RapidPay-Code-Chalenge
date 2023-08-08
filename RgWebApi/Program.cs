@@ -1,3 +1,4 @@
+using Microsoft.OpenApi.Models;
 using RbModels.Configuration;
 using RpDataHelper.Extensions;
 using RpDataHelper.Middlewares;

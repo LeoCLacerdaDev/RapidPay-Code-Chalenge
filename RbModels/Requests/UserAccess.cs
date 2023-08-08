@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace RbModels;
+namespace RbModels.Requests;
 
 public record UserAccess
 {

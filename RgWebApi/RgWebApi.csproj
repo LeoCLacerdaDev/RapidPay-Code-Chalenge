@@ -21,10 +21,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\RbModels\RbModels.csproj" />
       <ProjectReference Include="..\RpDataHelper\RpDataHelper.csproj" />
       <ProjectReference Include="..\RpServices\RpServices.csproj" />
