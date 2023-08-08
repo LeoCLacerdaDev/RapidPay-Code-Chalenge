@@ -17,7 +17,7 @@ public class UniversalFeesExtange : IUniversalFeeExchange
         _logger = logger;
         var random = new Random();
         CurrentFee = 1 * (decimal)random.NextDouble() * 2;
-        _timer = new Timer(36000000); // todo 1 hour in milliseconds
+        _timer = new Timer(3600000);
         _timer.Elapsed += UpdateFee;
         _timer.Start();
     }
