@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using RbModels;
 using RbModels.Requests;
+using RbModels.Requests.Controllers;
 using RpDataHelper.Exceptions;
 using RpServices.Services.Interfaces;
 

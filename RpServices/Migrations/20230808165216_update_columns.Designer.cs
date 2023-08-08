@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RpServices;
 
@@ -11,9 +12,11 @@ using RpServices;
 namespace RpServices.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230808165216_update_columns")]
+    partial class update_columns
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,10 +249,6 @@ namespace RpServices.Migrations
 
             modelBuilder.Entity("RbModels.Entity.PaymentHistory", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid>("CardId")
                         .HasColumnType("uniqueidentifier");
 
@@ -264,8 +263,6 @@ namespace RpServices.Migrations
 
                     b.Property<decimal>("PaymentWithFee")
                         .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
 
                     b.ToTable("PaymentHistories");
                 });

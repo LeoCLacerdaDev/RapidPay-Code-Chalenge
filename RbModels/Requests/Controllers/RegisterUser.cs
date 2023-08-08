@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using RbModels.Attributes;
 
-namespace RbModels.Requests;
+namespace RbModels.Requests.Controllers;
 
 public record RegisterUser
 {

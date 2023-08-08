@@ -1,4 +1,5 @@
 using RbModels.Requests;
+using RbModels.Requests.Controllers;
 using RbModels.Responses;
 
 namespace RpServices.Services.Interfaces;

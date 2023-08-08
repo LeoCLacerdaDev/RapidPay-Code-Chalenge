@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RpServices;
 
@@ -11,9 +12,11 @@ using RpServices;
 namespace RpServices.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230808164508_remove_key")]
+    partial class remove_key
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -246,15 +249,14 @@ namespace RpServices.Migrations
 
             modelBuilder.Entity("RbModels.Entity.PaymentHistory", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<decimal>("BalanceAfter")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("BalanceAtTheMoment")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<Guid>("CardId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<decimal>("CurrentBalance")
-                        .HasColumnType("decimal(18,2)");
 
                     b.Property<bool>("PaymentSucceeded")
                         .HasColumnType("bit");
@@ -264,8 +266,6 @@ namespace RpServices.Migrations
 
                     b.Property<decimal>("PaymentWithFee")
                         .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("Id");
 
                     b.ToTable("PaymentHistories");
                 });

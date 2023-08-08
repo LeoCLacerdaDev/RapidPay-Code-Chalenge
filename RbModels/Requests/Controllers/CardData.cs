@@ -1,4 +1,4 @@
-namespace RbModels.Requests;
+namespace RbModels.Requests.Controllers;
 
 public record CardData
 {

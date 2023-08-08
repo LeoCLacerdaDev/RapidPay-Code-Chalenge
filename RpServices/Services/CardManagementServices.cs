@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RbModels.Entity;
-using RbModels.Requests;
+using RbModels.Requests.Controllers;
 using RbModels.Responses;
 using RpServices.Services.Interfaces;
 
@@ -10,22 +10,26 @@ public class CardManagementServices : ICardManagement
 {
     private readonly DatabaseContext _context;
     private readonly IUniversalFeeExchange _feeExchange;
+    private readonly IPaymentRegister _paymentRegister;
 
+    private static SemaphoreSlim _semaphore = new(1, 1);
     private static readonly object Sync = new();
 
-    public CardManagementServices(DatabaseContext context, IUniversalFeeExchange feeExchange)
+    public CardManagementServices(DatabaseContext context, IUniversalFeeExchange feeExchange,
+        IPaymentRegister paymentRegister)
     {
         _context = context;
         _feeExchange = feeExchange;
+        _paymentRegister = paymentRegister;
     }
 
     public async Task<CardCreatedResponse> CreateCardAsync(CardCreate card)
     {
-        Monitor.Enter(Sync);
-        
+        await _semaphore.WaitAsync();
+
         if (await _context.Cards.AnyAsync(t => t.Digits == card.Digits))
             throw new Exception("Digits already exists in database.");
-        
+
         await using var transaction = await _context.Database.BeginTransactionAsync();
 
         try
@@ -64,50 +68,43 @@ public class CardManagementServices : ICardManagement
         finally
         {
             await transaction.DisposeAsync();
-            Monitor.Exit(Sync);
+            _semaphore.Release();
         }
     }
 
     public async Task<CardPaymentResponse> Pay(CardPayment payment, Guid userId)
     {
-        Monitor.Enter(Sync);
-        
-        await VerifyUserCard(payment.CardId, userId);
-
-        var dbCard = await _context.Cards
-            .Where(t => t.Id == payment.CardId)
-            .FirstOrDefaultAsync();
-
-        // TODO confirm this
-        var feeAmount = payment.Value * _feeExchange.CurrentFee;
-        var paymentWithFee = payment.Value + feeAmount;
-
-        if (dbCard.Balance < paymentWithFee)
-            return new CardPaymentResponse
-            {
-                PaymentSuccedded = false,
-                CardId = payment.CardId,
-                CurrentBalance = dbCard.Balance,
-                PaymentValue = payment.Value,
-                PaymentWithFee = paymentWithFee
-            };
+        await _semaphore.WaitAsync();
 
         await using var transaction = await _context.Database.BeginTransactionAsync();
+
         try
         {
+            await VerifyUserCard(payment.CardId, userId);
+
+            var dbCard = await _context.Cards
+                .Where(t => t.Id == payment.CardId)
+                .FirstOrDefaultAsync();
+
+            // TODO confirm this
+            var feeAmount = payment.Value * _feeExchange.CurrentFee;
+            var paymentWithFee = payment.Value + feeAmount;
+
+            if (dbCard.Balance < paymentWithFee)
+            {
+                await RegisterPayment(payment, false, dbCard, paymentWithFee);
+                await transaction.CommitAsync();
+                return CreatePaymentResponse(false, payment, dbCard, paymentWithFee);
+            }
+
             dbCard.Balance -= paymentWithFee;
+
+            await RegisterPayment(payment, true, dbCard, paymentWithFee);
 
             await _context.SaveChangesAsync();
             await transaction.CommitAsync();
 
-            return new CardPaymentResponse
-            {
-                PaymentSuccedded = true,
-                CardId = payment.CardId,
-                CurrentBalance = dbCard.Balance,
-                PaymentValue = payment.Value,
-                PaymentWithFee = paymentWithFee
-            };
+            return CreatePaymentResponse(true, payment, dbCard, paymentWithFee);
         }
         catch (Exception e)
         {
@@ -117,9 +114,23 @@ public class CardManagementServices : ICardManagement
         finally
         {
             await transaction.DisposeAsync();
-            Monitor.Exit(Sync);
+            _semaphore.Release();
         }
     }
+
+    private static CardPaymentResponse CreatePaymentResponse(bool isSuccess, CardPayment payment, Card dbCard,
+        decimal paymentWithFee)
+    {
+        return new CardPaymentResponse
+        {
+            PaymentSucceeded = isSuccess,
+            CardId = payment.CardId,
+            CurrentBalance = dbCard.Balance,
+            PaymentValue = payment.Value,
+            PaymentWithFee = paymentWithFee
+        };
+    }
+
 
     public async Task<CardBalanceResponse> GetBalance(CardBalance card, Guid userId)
     {
@@ -136,10 +147,23 @@ public class CardManagementServices : ICardManagement
         };
     }
 
+    private async Task RegisterPayment(CardPayment payment, bool isSuccess, Card dbCard, decimal paymentWithFee)
+    {
+        var history = new PaymentHistory
+        {
+            CardId = payment.CardId,
+            PaymentSucceeded = isSuccess,
+            PaymentValue = payment.Value,
+            PaymentWithFee = paymentWithFee,
+            CurrentBalance = dbCard.Balance
+        };
+        await _paymentRegister.RegisterPayment(history);
+    }
+
     private async Task VerifyUserCard(Guid cardId, Guid userId)
     {
         var validate = await _context.UserCards.AnyAsync(t => t.Id == cardId && t.UserId == userId);
         if (!validate)
-            throw new Exception("Card doesnt bellong to user.");
+            throw new Exception("Card doesn't belong to user.");
     }
 }

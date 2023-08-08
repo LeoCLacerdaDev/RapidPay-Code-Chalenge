@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RbModels.Requests;
+using RbModels.Requests.Controllers;
 using RpDataHelper.Exceptions;
 using RpServices.Services.Interfaces;
 

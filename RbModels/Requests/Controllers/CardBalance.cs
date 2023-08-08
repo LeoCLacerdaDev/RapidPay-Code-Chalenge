@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace RbModels.Requests;
+namespace RbModels.Requests.Controllers;
 
 public record CardBalance
 {
