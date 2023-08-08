@@ -22,16 +22,8 @@ public class DatabaseContext : IdentityDbContext<IdentityUser>
             .HasIndex(t => t.Digits)
             .IsUnique();
 
-        builder.Entity<UserCards>()
-            .HasMany(t => t.Cards)
-            .WithOne(t => t.UserCards)
-            .HasForeignKey(t => t.UserCardId)
-            .IsRequired();
-
-        builder.Entity<UserCards>()
-            .HasOne<IdentityUser<Guid>>()
-            .WithOne()
-            .HasForeignKey<UserCards>(t => t.UserId)
-            .IsRequired();
+        builder.Entity<Card>()
+            .Property(t => t.Balance)
+            .HasDefaultValue(0);
     }
 }

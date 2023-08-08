@@ -1,7 +1,9 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RbModels.Entity;
+using RbModels.Requests;
+using RpDataHelper.Exceptions;
+using RpServices.Services.Interfaces;
 
 namespace RgWebApi.Controllers
 {
@@ -10,16 +12,24 @@ namespace RgWebApi.Controllers
     [Authorize]
     public class CardManagementController : ControllerBase
     {
-        [HttpPost]
-        public IActionResult Try([FromBody] Card card)
+        private readonly ICardManagement _cardManagement;
+
+        public CardManagementController(ICardManagement cardManagement)
         {
-            var email = User.FindFirst(ClaimTypes.Email)?.Value;
-            var nameId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            return new OkObjectResult(new
-            {
-                user = User.FindFirst(ClaimTypes.Email)?.Value,
-                id = User.FindFirst(ClaimTypes.NameIdentifier)?.Value
-            });
+            _cardManagement = cardManagement;
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> CreateCard([FromBody] CardCreate card)
+        {
+            var nameId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value 
+                ?? throw new CustomException("Invalid Token");
+
+            card.UserId = Guid.Parse(nameId);
+
+            var newCard = await _cardManagement.CreateCardAsync(card);
+            
+            return new OkObjectResult(newCard);
         }
     }
 }
