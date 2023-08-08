@@ -11,7 +11,7 @@ builder.Services.InjectDbContext(configuration.GetConnectionString("ConnString")
                                  ?? throw new Exception("Empty Connection String"));
 builder.Services.InjectIdentity();
 builder.Services.InjectAuth(configuration);
-builder.Services.AddTransient<RpExceptionHandlerMiddleware>();
+builder.Services.InjectServices();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

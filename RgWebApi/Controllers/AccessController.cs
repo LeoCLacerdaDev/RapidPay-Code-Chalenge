@@ -6,9 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using RbModels;
 using RpDataHelper.Exceptions;
 using RpServices.Services.Interfaces;
-using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
-namespace RapidPay_Code_Chalenge.Controllers
+namespace RgWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,14 +15,16 @@ namespace RapidPay_Code_Chalenge.Controllers
     {
         private readonly IJwt _jwt;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public AccessController(UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager, IJwt jwt)
         {
             _userManager = userManager;
+            _roleManager = roleManager;
             _jwt = jwt;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<IActionResult> TryAccess([FromBody] UserAccess access)
         {
             var user = await _userManager.FindByEmailAsync(access.Email)
@@ -47,6 +48,39 @@ namespace RapidPay_Code_Chalenge.Controllers
             return Ok(new
             {
                 token = new JwtSecurityTokenHandler().WriteToken(token)
+            });
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUser register)
+        {
+            var verifyUser = await _userManager.FindByEmailAsync(register.Email);
+            if (verifyUser != null)
+                throw new CustomException("User already exists!");
+
+            var newUser = new IdentityUser
+            {
+                Email = register.Email,
+                UserName = register.UserName
+            };
+            var createUser = await _userManager.CreateAsync(newUser, register.Password);
+            if (!createUser.Succeeded)
+                throw new CustomException($"Error in creating new user: {string.Join(". ", createUser.Errors.Select(e => e.Description))}");
+
+            if (!await _roleManager.RoleExistsAsync(register.Role))
+                await _roleManager.CreateAsync(new IdentityRole(register.Role));
+
+            await _userManager.AddToRoleAsync(newUser, register.Role);
+
+            return new OkObjectResult(new
+            {
+                Message = "User Created!",
+                User = new
+                {
+                    Name = newUser.UserName,
+                    Email = newUser.Email,
+                    Role = register.Role
+                }
             });
         }
     }

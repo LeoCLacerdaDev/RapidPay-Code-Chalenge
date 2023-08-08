@@ -1,0 +1,15 @@
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/bin/Debug/net7.0/RpServices.deps.json
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/bin/Debug/net7.0/RpServices.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/bin/Debug/net7.0/RpServices.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/bin/Debug/net7.0/RbModels.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/bin/Debug/net7.0/RbModels.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.csproj.AssemblyReference.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.AssemblyInfoInputs.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.AssemblyInfo.cs
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.csproj.CoreCompileInputs.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.csproj.CopyComplete
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/refint/RpServices.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/RpServices.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpServices/obj/Debug/net7.0/ref/RpServices.dll

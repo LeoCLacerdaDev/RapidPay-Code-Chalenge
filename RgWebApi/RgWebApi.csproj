@@ -4,7 +4,6 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>RapidPay_Code_Chalenge</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

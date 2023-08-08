@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using RpDataHelper.Middlewares;
 using RpServices;
 using RpServices.Services;
 using RpServices.Services.Interfaces;
@@ -25,6 +26,16 @@ public static class ServicesInjection
             .AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<DatabaseContext>()
             .AddDefaultTokenProviders();
+        
+        service.Configure<IdentityOptions>(opt =>
+        {
+            opt.Password.RequireDigit = false;
+            opt.Password.RequireLowercase = false;
+            opt.Password.RequireNonAlphanumeric = false;
+            opt.Password.RequireUppercase = false;
+            opt.Password.RequiredLength = 4;
+            opt.User.RequireUniqueEmail = true;
+        });
     }
 
     public static void InjectAuth(this IServiceCollection service, IConfiguration config)
@@ -54,6 +65,7 @@ public static class ServicesInjection
     public static void InjectServices(this IServiceCollection service)
     {
         service
-            .AddSingleton<IJwt, JwtServices>();
+            .AddSingleton<IJwt, JwtServices>()
+            .AddTransient<RpExceptionHandlerMiddleware>();
     }
 }

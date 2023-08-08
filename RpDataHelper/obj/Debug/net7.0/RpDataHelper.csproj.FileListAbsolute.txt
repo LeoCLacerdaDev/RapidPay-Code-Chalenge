@@ -1,0 +1,17 @@
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RpDataHelper.deps.json
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RpDataHelper.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RpDataHelper.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RbModels.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RpServices.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RpServices.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/bin/Debug/net7.0/RbModels.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.csproj.AssemblyReference.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.AssemblyInfoInputs.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.AssemblyInfo.cs
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.csproj.CoreCompileInputs.cache
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.csproj.CopyComplete
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/refint/RpDataHelper.dll
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/RpDataHelper.pdb
+/Users/leonardolacerda/Documents/Documentos - MacBook Pro de Leonardo/Dev/Rider/RapidPay-Code-Chalenge/RpDataHelper/obj/Debug/net7.0/ref/RpDataHelper.dll

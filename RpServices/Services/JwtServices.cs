@@ -21,7 +21,7 @@ public class JwtServices : IJwt
         var token = new JwtSecurityToken(
             issuer: _jwt.ValidIssuer,
             audience: _jwt.ValidAudience,
-            expires: DateTime.Now.AddMinutes(15),
+            expires: DateTime.Now.AddSeconds(30),
             claims: claims,
             signingCredentials: new SigningCredentials(key, SecurityAlgorithms.HmacSha256));
         return token;
