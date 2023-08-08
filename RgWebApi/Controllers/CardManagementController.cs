@@ -13,23 +13,52 @@ namespace RgWebApi.Controllers
     public class CardManagementController : ControllerBase
     {
         private readonly ICardManagement _cardManagement;
+        private readonly IUniversalFeeExchange _fee;
 
-        public CardManagementController(ICardManagement cardManagement)
+        public CardManagementController(ICardManagement cardManagement, IUniversalFeeExchange fee)
         {
             _cardManagement = cardManagement;
+            _fee = fee;
         }
 
         [HttpPost("create")]
         public async Task<IActionResult> CreateCard([FromBody] CardCreate card)
         {
-            var nameId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value 
-                ?? throw new CustomException("Invalid Token");
+            var userId = UserId();
 
-            card.UserId = Guid.Parse(nameId);
+            card.UserId = Guid.Parse(userId);
 
             var newCard = await _cardManagement.CreateCardAsync(card);
             
-            return new OkObjectResult(newCard);
+            return Ok(newCard);
         }
+
+        [HttpGet("balance")]
+        public async Task<IActionResult> Balance([FromQuery] CardBalance card)
+        {
+            var userId = UserId();
+            var response = await _cardManagement.GetBalance(card, Guid.Parse(userId));
+            return Ok(response);
+        }
+
+        [HttpPut("payment")]
+        public async Task<IActionResult> Pay([FromBody] CardPayment payment)
+        {
+            var userId = Guid.Parse(UserId());
+            var response = await _cardManagement.Pay(payment, userId);
+            return Ok(response);
+        }
+
+        [HttpGet("fee")]
+        public IActionResult Fee()
+        {
+            return Ok(new
+            {
+                fee = _fee.CurrentFee,
+            });
+        }
+        
+        private string UserId() => User.FindFirst(ClaimTypes.NameIdentifier)?.Value 
+                                                   ?? throw new CustomException("Invalid Token");
     }
 }

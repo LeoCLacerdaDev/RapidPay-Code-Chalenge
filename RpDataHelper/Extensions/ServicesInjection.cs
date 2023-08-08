@@ -68,6 +68,7 @@ public static class ServicesInjection
         service
             .AddSingleton<IJwt, JwtServices>()
             .AddTransient<RpExceptionHandlerMiddleware>()
-            .AddScoped<ICardManagement, CardManagementServices>();
+            .AddScoped<ICardManagement, CardManagementServices>()
+            .AddSingleton<IUniversalFeeExchange, UniversalFeesExtange>();
     }
 }
