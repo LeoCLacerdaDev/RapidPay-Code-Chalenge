@@ -1,7 +1,6 @@
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using RbModels.Requests;
 using RbModels.Requests.Controllers;
 using RpDataHelper.Exceptions;
 using RpServices.Services.Interfaces;
@@ -50,15 +49,6 @@ namespace RgWebApi.Controllers
             return Ok(response);
         }
 
-        [HttpGet("fee")]
-        public IActionResult Fee()
-        {
-            return Ok(new
-            {
-                fee = _fee.CurrentFee,
-            });
-        }
-        
         private string UserId() => User.FindFirst(ClaimTypes.NameIdentifier)?.Value 
                                                    ?? throw new CustomException("Invalid Token");
     }

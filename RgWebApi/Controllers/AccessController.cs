@@ -30,10 +30,10 @@ namespace RgWebApi.Controllers
         public async Task<IActionResult> TryAccess([FromBody] UserAccess access)
         {
             var user = await _userManager.FindByEmailAsync(access.Email)
-                       ?? throw new CustomException("User not found.", HttpStatusCode.Unauthorized);
+                       ?? throw new CustomException("Not authorized.", HttpStatusCode.Unauthorized);
 
             if (!await _userManager.CheckPasswordAsync(user, access.Password))
-                throw new CustomException("Invalid credentials.", HttpStatusCode.Unauthorized);
+                throw new CustomException("Not authorized.", HttpStatusCode.Unauthorized);
 
             var roles = await _userManager.GetRolesAsync(user);
             var claims = roles

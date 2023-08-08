@@ -12,8 +12,7 @@ public class CardManagementServices : ICardManagement
     private readonly IUniversalFeeExchange _feeExchange;
     private readonly IPaymentRegister _paymentRegister;
 
-    private static SemaphoreSlim _semaphore = new(1, 1);
-    private static readonly object Sync = new();
+    private static readonly SemaphoreSlim Semaphore = new(1, 1);
 
     public CardManagementServices(DatabaseContext context, IUniversalFeeExchange feeExchange,
         IPaymentRegister paymentRegister)
@@ -25,7 +24,7 @@ public class CardManagementServices : ICardManagement
 
     public async Task<CardCreatedResponse> CreateCardAsync(CardCreate card)
     {
-        await _semaphore.WaitAsync();
+        await Semaphore.WaitAsync();
 
         if (await _context.Cards.AnyAsync(t => t.Digits == card.Digits))
             throw new Exception("Digits already exists in database.");
@@ -68,13 +67,13 @@ public class CardManagementServices : ICardManagement
         finally
         {
             await transaction.DisposeAsync();
-            _semaphore.Release();
+            Semaphore.Release();
         }
     }
 
     public async Task<CardPaymentResponse> Pay(CardPayment payment, Guid userId)
     {
-        await _semaphore.WaitAsync();
+        await Semaphore.WaitAsync();
 
         await using var transaction = await _context.Database.BeginTransactionAsync();
 
@@ -86,7 +85,6 @@ public class CardManagementServices : ICardManagement
                 .Where(t => t.Id == payment.CardId)
                 .FirstOrDefaultAsync();
 
-            // TODO confirm this
             var feeAmount = payment.Value * _feeExchange.CurrentFee;
             var paymentWithFee = payment.Value + feeAmount;
 
@@ -114,7 +112,7 @@ public class CardManagementServices : ICardManagement
         finally
         {
             await transaction.DisposeAsync();
-            _semaphore.Release();
+            Semaphore.Release();
         }
     }
 

@@ -7,11 +7,6 @@ namespace RpDataHelper.Middlewares;
 
 public class RpExceptionHandlerMiddleware : IMiddleware
 {
-    // private readonly RequestDelegate _next;
-    //
-    // public RpExceptionHandlerMiddleware(RequestDelegate next) =>
-    //     _next = next;
-    //
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
         try
@@ -28,7 +23,7 @@ public class RpExceptionHandlerMiddleware : IMiddleware
         }
     }
 
-    private async Task HandleExceptionAsync(
+    private static async Task HandleExceptionAsync(
         HttpContext context, 
         Exception e, 
         HttpStatusCode code = HttpStatusCode.BadRequest)
